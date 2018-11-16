@@ -1,0 +1,71 @@
+<body class="skin-blue">
+  <div class="wrapper">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a routerLink="/admin" class="logo" style="background-color: #40739e;"><b>Admin</b>Progressive</a>
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="user user-menu" *ngIf="loggedIn">
+              <a>
+                <img src="../../../../assets/image/user2-160x160.jpg" class="user-image" alt="User Image" />
+                <span class="hidden-xs">Agent Admin</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar" style="background-color: #40739e;">
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel" *ngIf="loggedIn">
+          <div class="pull-left image">
+            <img src="../../../../assets/image/user2-160x160.jpg" class="img-circle" alt="User Image" />
+          </div>
+          <div class="pull-left info">
+            <p>Agent Admin</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          </div>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li class="active treeview" *ngIf="!loggedIn">
+            <a routerLink="/admin">
+              <i class="fa fa-sign-in"></i> <span>Login</span>
+            </a>
+          </li>
+          <li class="treeview" *ngIf="loggedIn">
+            <a (click)="logout()">
+              <i class="fa fa-sign-out"></i><span>Logout</span>
+            </a>
+          </li>
+          <li class="header" *ngIf="loggedIn">MAIN NAVIGATION</li>
+          <li class="active treeview" *ngIf="loggedIn" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a routerLink="/admin/client/list">
+              <i class="fa fa-users"></i> <span>Clients</span>
+            </a>
+          </li>
+          <li class="treeview " *ngIf="loggedIn" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a routerLink="/admin/account/list"><i class="fa fa-files-o"></i> <span>Accounts</span> </a>
+          </li>
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="content-wrapper">
+
+      <router-outlet></router-outlet>
+
+    </div><!-- content-wrapper -->
+
+  </div><!-- ./wrapper -->
+</body>

@@ -1,0 +1,48 @@
+<section class="content-header">
+  <h1>
+   Account Details
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Account Details</a></li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-10 offset-sm-1">
+                <div class="list-group">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{account?.type | uppercase}} ACCOUNT</h5>
+                        <small class="text-muted">Title: {{account?.name}}</small>
+                      </div>
+                      <div class="d-flex w-100 justify-content-between">
+                          <h5><strong>Balance: {{account?.amount}}$</strong></h5>
+                          <div>
+                            <small><button class="btn bg-olive" (click)="changeBalance('credit')">Credit</button></small>
+                            <small><button class="btn bg-maroon" (click)="changeBalance('debit')">Debit</button></small>
+                            <small><button class="btn bg-purple" [routerLink]="['/transfer/', id]">Transfer</button></small>
+                            <small *ngIf="account?.type == 'saving'"><button mat-icon-button color="warn" (click)="closeAccountConfirm(id)"><mat-icon svgIcon="delete"></mat-icon></button></small>
+                          </div>
+                        </div>
+                      <div class="d-flex w-100 justify-content-between">
+                          <div *ngIf="account?.type === 'spending'">
+                              <h5><span class="badge badge-pill badge-warning">Credit Authorized: {{account?.credit}}$ </span></h5>
+                            </div>
+                            <div  *ngIf="account?.type === 'saving'">
+                              <h5><span class="badge badge-pill badge-info">Minimum Required: {{account?.minimum}}$ </span></h5>
+                              <h5><span class="badge badge-pill badge-success">Interest Rate: {{account?.interest}}% </span></h5>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+    </div><!-- /.box-body -->
+    <div style="margin-top:150px;" *ngIf="creditBalance || debitBalance">
+      <app-manage-balance [typeChange]="typeChange" [typeAccount]="type" [idAccount]="id" (reload)="reload($event)" ></app-manage-balance>
+    </div>
+</section>

@@ -1,0 +1,54 @@
+<section class="content-header">
+  <h1>
+    Dashboard - Clients
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Dashboard - Clients</a></li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <!-- TABLE: CLIENTS -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Progressive Bank's Client</h3>
+        </div><!-- /.box-header -->
+        <div class="box-footer clearfix">
+          <a routerLink="/admin/client/create" class="btn btn-sm btn-info btn-flat pull-left">Add New Client</a>
+          <a routerLink="/admin/account/list" class="btn btn-sm btn-default btn-flat pull-right">View All Accounts</a>
+        </div><!-- /.box-footer -->
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" style="width:35%;">Client Id</th>
+                  <th scope="col" style="width:35%;">Lastname</th>
+                  <th scope="col" style="width:35%;">Firstname</th>
+                  <th style="white-space: nowrap;"></th>
+                  <th style="white-space: nowrap;"></th>
+                  <th style="white-space: nowrap;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of clients, let i = index">
+                  <th><a [routerLink]="['/admin/client/', client.id]">{{client?.id}}</a></th>
+                  <td>{{client?.firstname}}</td>
+                  <td>{{client?.lastname}}</td>
+                  <td><a [routerLink]="['/admin/client/', client.id]"><button class="btn bg-olive">View Accounts</button></a></td>
+                  <td><a [routerLink]="['/admin/client/edit/', client.id]"><button class="btn bg-orange">Edit</button></a></td>
+                  <td><a (click)="deleteClientConfirm(client.id)"><button class="btn bg-purple">Delete</button></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- /.table-responsive -->
+        </div><!-- /.box-body -->
+
+      </div><!-- /.box -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</section>

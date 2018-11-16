@@ -1,0 +1,39 @@
+<section class="content-header">
+    <h1>
+        Transfer
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Transfer</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row" style="display:flex;">
+        <div class="col-md-6">
+            <!-- Primary box -->
+            <a (click)="transfer('myAccounts')">
+                <div class="box box-primary" style="height: 200px;">
+                    <div class="box-header" style="text-align: center; margin-top:75px;">
+                        <h3 class="box-title" style="font-size:24px;">Between My Accounts</h3>
+                    </div>
+                </div><!-- /.box -->
+            </a>
+        </div><!-- /.col -->
+
+        <div class="col-md-6">
+            <!-- Info box -->
+            <a (click)="transfer('toOthers')">
+                <div class="box box-info" style="height: 200px;">
+                    <div class="box-header" style="text-align: center; margin-top:75px;">
+                        <h3 class="box-title" style="font-size:24px;">Send Money to Another Progressive Bank's Client</h3>
+                    </div>
+                </div><!-- /.box -->
+            </a>
+        </div><!-- /.col -->
+    </div>
+    <div style="margin:50px; " *ngIf="betweenMyAccounts || toOthers">
+        <app-manage-transfer [typeTransfer]="typeTransfer" [clientId]="clientId"></app-manage-transfer>
+    </div>
+</section>

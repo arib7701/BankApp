@@ -1,0 +1,20 @@
+@import './assets/css/bootswatch.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets/css/adminTE.css";
+@import "./assets/css/skin-blue.min.css";
+@import "./assets/css/skin-black.min.css";
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin:auto;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+button {
+  margin-right: 10px !important;
+}

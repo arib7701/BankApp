@@ -1,0 +1,77 @@
+<div class="skin-black layout-boxed">
+  <div class="wrapper">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a routerLink="/admin" class="logo"><b>My </b>Progressive Bank</a>
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="user user-menu" *ngIf="loggedIn">
+              <a>
+                <img src="../../../../assets/image/client_avatar.png" class="user-image" alt="User Image" />
+                <span class="hidden-xs">{{firstname}} {{lastname}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel" *ngIf="loggedIn">
+          <div class="pull-left image">
+            <img src="../../../../assets/image/client_avatar.png" class="img-circle" alt="User Image" />
+          </div>
+          <div class="pull-left info">
+            <p>{{firstname}} {{lastname}}</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          </div>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li class="active treeview" *ngIf="!loggedIn">
+            <a routerLink="/login">
+              <i class="fa fa-sign-in"></i> <span>Login</span>
+            </a>
+          </li>
+          <li class="treeview" *ngIf="loggedIn">
+            <a (click)="logout()">
+              <i class="fa fa-sign-out"></i><span>Logout</span>
+            </a>
+          </li>
+          <li class="header" *ngIf="loggedIn">MAIN NAVIGATION</li>
+          <li class="active treeview" *ngIf="loggedIn" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/account/list/', clientId]">
+              <i class="fa fa-users"></i> <span>My Dashboard</span>
+            </a>
+          </li>
+          <li class="treeview " *ngIf="loggedIn" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/profile/', clientId]"><i class="fa fa-files-o"></i> <span>My Profile</span> </a>
+          </li>
+          <li class="treeview " *ngIf="loggedIn" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/transfer/', clientId]"><i class="fa fa-mail-forward"></i> <span>Tranfers</span> </a>
+          </li>
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- =============================================== -->
+
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="content-wrapper">
+
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+
+
+    </div><!-- /.content-wrapper -->
+  </div><!-- ./wrapper -->
+</div>

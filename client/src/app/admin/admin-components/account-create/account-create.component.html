@@ -1,0 +1,123 @@
+<section class="content-header">
+    <h1>New Account</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">New Account</a></li>
+    </ol>
+</section>
+  
+  <!-- Main content -->
+<section class="content">
+  <div class="container" style="margin-bottom:50px;">
+      <div class="row" style="display:flex;">
+        <div class="col-md-9 offset-md-3">
+            <flash-messages></flash-messages>
+            <div class="box box-primary"  *ngIf="type === 'spending'">
+                <div class="box-header">
+                  <h3 class="box-title">Add a New Spending Account</h3>
+                </div><!-- /.box-header -->
+                <div class="box-footer clearfix">
+                    <a routerLink="/admin/client/list" class="btn btn-sm btn-default btn-flat pull-right">Back to Clients</a>
+                    <a [routerLink]="['/admin/client/', clientId]" class="btn btn-sm btn-default btn-flat pull-right">Back to Client Detail</a>
+                  </div><!-- /.box-footer -->
+                <!-- form start -->
+                <form (submit)=onSubmit(type) [formGroup]="accountForm">
+                  <div class="box-body">
+                      <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Account Title" name="name" id="name" formControlName="name">
+                            <mat-error *ngIf="name.hasError('required')">
+                                Required <strong>field</strong>
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Account starting balance" name="amount" id="amount" formControlName="amount">
+                            <mat-error *ngIf="amount.hasError('required')">
+                                Required <strong>field</strong>
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Credit authorized" name="credit" id="credit" formControlName="credit">
+                              <mat-error *ngIf="credit.hasError('required')">
+                                Required <strong>field</strong>
+                              </mat-error>
+                              <mat-error *ngIf="credit.hasError('max')">
+                                  Maximum of <strong>$9999</strong>
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                  </div><!-- /.box-body -->
+            
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]="!accountForm.valid">Create New Spending</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+
+
+            <div class="box box-primary"  *ngIf="type === 'saving'">
+                <div class="box-header">
+                  <h3 class="box-title">Add a New Saving Account</h3>
+                </div><!-- /.box-header -->
+                <div class="box-footer clearfix">
+                    <a routerLink="/admin/client/list" class="btn btn-sm btn-default btn-flat pull-right">Back to Clients</a>
+                    <a [routerLink]="['/admin/client/', clientId]" class="btn btn-sm btn-default btn-flat pull-right">Back to Client Detail</a>
+                  </div><!-- /.box-footer -->
+                <!-- form start -->
+                <form (submit)=onSubmit(type) [formGroup]="accountForm">
+                  <div class="box-body">
+                      <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Account Title" name="name" id="name" formControlName="name">
+                            <mat-error *ngIf="name.hasError('required')">
+                                Required <strong>field</strong>
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Account starting balance" name="amount" id="amount" formControlName="amount">
+                            <mat-error *ngIf="amount.hasError('required')">
+                                Required <strong>field</strong>
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Minimum required" name="minimum" id="minimum" formControlName="minimum">
+                              <mat-error *ngIf="minimum.hasError('required')">
+                                Required <strong>field</strong>
+                              </mat-error>
+                              <mat-error *ngIf="minimum.hasError('max')">
+                                  Maximum of <strong>$99</strong>
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Interest rate" name="interest" id="interest" formControlName="interest">
+                                <mat-error *ngIf="interest.hasError('required')">
+                                  Required <strong>field</strong>
+                                </mat-error>
+                                <mat-error *ngIf="interest.hasError('max')">
+                                    Maximum of <strong>$99</strong>
+                                </mat-error>
+                            </mat-form-field>
+                          </div>
+                  </div><!-- /.box-body -->
+            
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]="!accountForm.valid">Create New Saving</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+        </div>
+      </div>
+    </div>
+</section>
+    
+    

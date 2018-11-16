@@ -1,0 +1,273 @@
+// ADMIN - USE CASE DIAGRAM
+@startuml
+:Agent:
+(Login)
+(Gérer Clients)
+(Gérer Comptes)
+Agent --> (Login)
+(Login) --> (Gérer Clients)
+(Login) --> (Gérer Comptes)
+(Gérer Clients) --> (Gérer Comptes)
+(Gérer Clients) --> (Lister Clients)
+(Gérer Clients) --> (Ajouter Nouveau Client)
+(Gérer Clients) --> (Editer Client)
+(Gérer Clients) --> (Supprimer Clients)
+(Gérer Comptes) --> (Lister Comptes)
+(Gérer Comptes) --> (Ajouter Nouveau Comptes)
+(Gérer Comptes) --> (Editer Comptes)
+(Gérer Comptes) --> (Supprimer Comptes)
+@enduml
+
+// CLIENT - USE CASE DIAGRAM
+@startuml
+:Client:
+(Login)
+Client --> (Login)
+(Login) --> (Gérer Client Information)
+(Login) --> (Gérer Comptes)
+(Gérer Client Information) --> (Voir Information)
+(Gérer Client Information) --> (Editer Information)
+(Gérer Comptes) --> (Lister Comptes)
+(Gérer Comptes) --> (Supprimer Comptes)
+(Lister Comptes) --> (Détail Compte)
+(Détail Compte) --> (Créditer Compte)
+(Détail Compte) --> (Débiter Compte)
+(Détail Compte) --> (Transferér)
+@enduml
+
+// COMPONENT DIAGRAM@startuml
+package "Front Angular" {
+  [Front View]
+  [Front Service]
+  [Front Controller]
+  [Front Model]
+}
+ 
+node "Back Spring Boot" {
+  [Back Controller]
+  [Back Service] 
+  [Back Hibernate]
+}  
+
+
+database "MySQL" {
+  [Client]
+  [Compte Courant]
+  [Compte Epargne]
+}
+
+[Front Service] --> [Front Controller]
+[Front Controller] --> [Front Model]
+[Front Model] --> [Front View]
+[Front Service] --> [Back Controller]
+[Back Controller] --> [Back Service]
+[Back Service] --> [Back Hibernate]
+[Back Hibernate] --> [Client]
+[Back Hibernate] --> [Compte Courant]
+[Back Hibernate] --> [Compte Epargne]
+@enduml
+
+// CLASS DIAGRAM
+@startuml
+
+title  Diagramme de Classe
+
+package controllers {
+
+    class ClientController {
+      clientService : ClientService
+      ResponseEntity getClientList()
+      ResponseEntity getClientById(Integer id)
+      ResponseEntity saveClient(Client clientBody)
+      ResponseEntity removeClientById(Integer id)
+      ResponseEntity updateClient(Integer id,  Client clientBody)
+    }
+    
+    class SpendingAccountController {
+       spendingService : SpendingService
+       ResponseEntity getSpendingAccountList()
+       ResponseEntity getSpendingAccountByClientId(Integer id)
+       ResponseEntity getSpendingAccountByIdInteger id)
+       ResponseEntity saveSpendingAccount(SpendingAccount spendingAccountBody)
+       ResponseEntity removeSpendingAccount(Integer id)
+       ResponseEntity removeSpendingAccountByClientId(Integer id)
+       ResponseEntity updateSpendingAccountInteger id, SpendingAccount spendingAccountBody) 
+    }
+    
+    class SavingAccountController {
+      savingService : SavingService
+      ResponseEntity getSavingAccountList()
+       ResponseEntity getSavingAccountListByClientId(Integer id)
+       ResponseEntity getSavingAccountByIdInteger id)
+       ResponseEntity saveSavingAccount(SavingAccount savingAccountBody)
+       ResponseEntity removeSavingAccount(Integer id)
+       ResponseEntity removeSavingAccountByClientId(Integer id)
+       ResponseEntity updateSavingAccountInteger id, SavingAccount savingAccountBody) 
+    }
+
+}
+
+package services {
+
+    class ClientService {
+      clientRepository : ClientRepository
+      spendingRepository : SpendingRepository
+      savingRepository : SavingRepository
+      List<Client> findAll();
+      Client findById(int id);
+      void save(Client client);
+      boolean removeById(int id);
+      Client findByEmail(String email );
+      boolean removeByEmail (String email);
+      boolean update(int id, Client client);
+    }
+    
+    class SpendingAccountService {
+       clientRepository : ClientRepository
+       spendingRepository : SpendingRepository
+       List<SpendingAccount> findAll();
+       SpendingAccount findById(int id);
+       boolean save(SpendingAccount spendingAccount);
+       void removeById(int id);
+       boolean updateSpendingAccount(int id, SpendingAccount spendingAccount);
+       SpendingAccount findByClientId(int id);
+       boolean removeByClientId(int id);
+    }
+    
+    class SavingAccountService {
+      clientRepository : ClientRepository
+      savingRepository : SavingRepository
+      List<SavingAccount> findAll();
+      List<SavingAccount> findAllByClientId(int id);
+      SavingAccount findById(int id);
+      boolean save(SavingAccount savingAccount);
+      void removeById(int id);
+      void removeByClientId(int id);
+      boolean updateSavingAccount(int id, SavingAccount savingAccount
+    }
+
+}
+
+
+package repository {
+
+    interface ClientRepository
+    interface SpendingAccountRepository
+    interface SavingAccountRepository 
+
+}
+
+interface CrudRepository 
+
+ClientController *-- ClientService : composition
+SpendingAccountController *-- SpendingAccountService : composition
+SavingAccountController *-- SavingAccountService : composition
+
+ClientService *-down- ClientRepository : composition
+ClientService *-down- SpendingAccountRepository : composition
+ClientService *-down- SavingAccountRepository : composition
+SpendingAccountService *-down- ClientRepository : composition
+SpendingAccountService *-down- SpendingAccountRepository : composition
+SavingAccountService *-down- ClientRepository : composition
+SavingAccountService *-down- SavingAccountRepository : composition
+
+
+
+CrudRepository <|-up- ClientRepository : inheritance
+CrudRepository <|-up- SpendingAccountRepository : inheritance
+CrudRepository <|-up- SavingAccountRepository : inheritance
+
+
+
+@enduml
+
+// CLASS DIAGRAM MODELS
+@startuml
+
+title  Diagramme de Classe - Model
+
+
+
+package model_dao {
+
+    class ClientEntity {
+      id : Integer
+      lastname : String
+      firstname : String
+      email : String
+      phone : String
+    }
+    
+    class SpendingAccountEntity {
+       id : Integer
+       name : String
+       amount : BigDecimal
+       credit : BigDecimal
+       client : ClientEntity
+    }
+    
+    class SavingAccountEntity {
+       id : Integer
+       name : String
+       amount : BigDecimal
+       minimum : BigDecimal
+       interest : BigDecimal
+       client : ClientEntity
+    }
+    
+    ClientEntity "1" *-- "1" SpendingAccountEntity : composition
+    ClientEntity "1" *-- "many" SavingAccountEntity : composition
+}
+
+package model_objet {
+
+    class Client {
+      id : Integer
+      lastname : String
+      firstname : String
+      email : String
+      phone : String
+      accounts : List<Account>
+    }
+    
+    class Account {
+       id : Integer
+       name : String
+       amount : BigDecimal
+       clientId : Integer
+    }
+    
+    class SpendingAccount {
+       credit : BigDecimal
+    }
+    
+    class SavingAccount {
+       minimum : BigDecimal
+       interest : BigDecimal
+    }
+    
+    Client "1" *-- "many" Account : composition
+    Account <|-- SpendingAccount : inheritance
+    Account <|-- SavingAccount : inheritance
+}
+
+
+@enduml
+
+
+//Angular Diagram
+
+@startuml
+
+package "App Module" {
+[Shared Module]
+[Tests]
+[Service]
+[Model]
+[Admin Module]
+[Client Module]
+ [Admin Module] --> [Admin Component]
+ [Client Module] --> [Client Component]
+
+}
+@enduml

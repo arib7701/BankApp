@@ -1,0 +1,57 @@
+<section class="content-header">
+  <h1>Client Details</h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Client Details</a></li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <div class="box-header" style="margin-bottom: 20px; margin-top: 10px;">
+            <div class="box-tools pull-right">
+              <a [routerLink]="['/account/list/', id]" class="btn btn-sm btn-default btn-flat pull-right">Back
+                to Dashboard</a>
+            </div>
+            </div>
+            <div class="box-body">
+              <div class="row" style="display:flex;">
+                <div class="col-sm-8">
+                  <div class="card border-info mb-3" style="max-width: 70rem;">
+                    <div class="card-header">
+                      <h4>Your Details</h4>
+                    </div>
+                    <div class="card-body">
+                      <p><strong>Firstname: </strong>{{client?.firstname}}</p>
+                      <p><strong>Lastname: </strong>{{client?.lastname}}</p>
+                      <p><strong>Email: </strong>{{client?.email}}</p>
+                      <p><strong>Phone: </strong>{{client?.phone}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="card border-info mb-3" style="max-width: 20rem;">
+                    <div class="card-header">
+                      <h4>Your Photo</h4>
+                    </div>
+                    <div class="card-body">
+                        <img src="../../../../assets/image/client_avatar.png" class="user-image" alt="User Image" style="width: 100%;"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="display:flex; margin-left: 15px;">
+                  <a [routerLink]="['/profile/edit/', id]" class="btn btn-sm btn-default btn-flat pull-right">Edit your profile
+                    </a>
+              </div>
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </div>
+</section>

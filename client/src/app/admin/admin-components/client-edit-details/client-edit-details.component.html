@@ -1,0 +1,77 @@
+<section class="content-header">
+    <h1>Edit Client</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Edit Client</a></li>
+    </ol>
+</section>
+  
+  <!-- Main content -->
+<section class="content">
+<div class="container" style="margin:50px;">
+    <div class="row" style="display:flex;">
+      <div class="col-md-9 offset-md-3">
+          <flash-messages></flash-messages>
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Edit Client's Information</h3>
+            </div><!-- /.box-header -->
+            <div class="box-footer clearfix">
+                <a routerLink="/admin/client/list" class="btn btn-sm btn-default btn-flat pull-right">Back to Clients</a>
+                <a [routerLink]="['/admin/client/', id]" class="btn btn-sm btn-default btn-flat pull-right">Back to Client Detail</a>
+              </div><!-- /.box-footer -->
+            <!-- form start -->
+            <form (submit)=onSubmit() [formGroup]="editClientForm">
+              <div class="box-body">
+                <div class="form-group">
+                  <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Your Firstname" name="firstname" id="firstname" formControlName="firstname">
+                    <mat-error *ngIf="firstname.hasError('required')">
+                        Required <strong>field</strong>
+                      </mat-error>
+                  </mat-form-field> 
+                </div>
+                <div class="form-group">
+                  <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Your Lastname" name="lastname" id="lastname" formControlName="lastname">
+                    <mat-error *ngIf="lastname.hasError('required')">
+                        Required <strong>field</strong>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field class="example-full-width">
+                    <input type="email" matInput placeholder="Your email" name="email" id="email" formControlName="email">
+                    <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                        Please enter a valid email.
+                      </mat-error>
+                      <mat-error *ngIf="email.hasError('required')">
+                        Required <strong>field</strong>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                      <input type="tel" matInput placeholder="Your phone" name="phone" id="phone" formControlName="phone">
+                      <mat-error *ngIf="phone.hasError('required')">
+                          Required <strong>field</strong>
+                        </mat-error>
+                        <mat-error *ngIf="phone.hasError('maxlength')">
+                            Your phone number should have <strong>10 digits</strong>
+                        </mat-error>
+                        <mat-error *ngIf="phone.hasError('minlength')">
+                            Your phone number should have <strong>10 digits</strong>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+              </div><!-- /.box-body -->
+        
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" [disabled]="!editClientForm.valid">Update Information</button>
+              </div>
+            </form>
+          </div><!-- /.box -->
+      </div>
+    </div>
+  </div>
+</section>
