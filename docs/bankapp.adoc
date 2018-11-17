@@ -1,8 +1,6 @@
-= Documentation de l'Application Bankonet
+= Documentation de l'Application Progressive Bank
 
-L'entreprise Bankonet veut commander une application Bancaire utilisant les technologies Angular pour le front et Spring Boot Java pour le back.
-
-Cahier des charges: https://gitlab.bordeaux.sqli.com/formation-poe/cdc-bankonet/blob/master/cdc_bankonet.adoc
+L'entreprise Progressive Bank veut commander une application Bancaire utilisant les technologies Angular pour le front et Spring Boot Java pour le back.
 
 == Spécifications Fonctionnelles
 
@@ -19,8 +17,6 @@ Un agent se connectera à un espace spécifique, requièrant un login, pour :
 * La gestion des comptes
 
 image::images/uml/Admin-UseCase.png[]
-
-https://gitlab.bordeaux.sqli.com/formation-poe/prj-bankonet/blob/master/doc/uml/bankonet-agent_use_case.puml[Sources]
 
 Il pourra effectuer les actions suivantes :
 
@@ -49,7 +45,7 @@ image::images/maquettes/AdminCreateClient.png[]
 image::images/maquettes/AdminEditClient.png[]
 
 * Supprimer un client
-** On ne peut supprimer un client que s'il n'a plus aucun compte chez bankonet
+** On ne peut supprimer un client que s'il n'a plus aucun compte chez Progressive Bank
 --
 NOTE: Supprimer un client, entrainera la suppression de tous ces comptes
 --
@@ -123,7 +119,7 @@ NOTE: La suppression du compte courant, entraine la suppression du compte client
 
 image::images/maquettes/AdminDeleteSpending.png[]
 
-** Obtenir la liste de tous les comptes courants et épargnes de Bankonet, avec les informations suivantes :
+** Obtenir la liste de tous les comptes courants et épargnes de Progressive Bank, avec les informations suivantes :
 *** Id du compte
 *** Id du client
 *** Status du compte
@@ -150,8 +146,6 @@ Le client se connectera à un espace spécifique permettant :
 * Le transfer d'argent
 
 image::images/uml/Client-UseCase.png[]
-
-https://gitlab.bordeaux.sqli.com/formation-poe/prj-bankonet/blob/master/doc/uml/bankonet-client_use_case.puml[Sources]
 
 Il pourra donc effectuer les actions suivantes :
 
@@ -249,8 +243,6 @@ L'application s'appuiera sur les principes du MVC Client :
 
 image::images/uml/ComponentDiagram.png[]
 
-https://gitlab.bordeaux.sqli.com/formation-poe/prj-bankonet/blob/master/doc/uml/bankonet-dat.puml[sources]
-
 En terme de stack techniques nous aurons donc :
 
 * Angular 6 : Pour la partie Front
@@ -272,9 +264,7 @@ Le modèle de la base de données s'appuiera sur trois tables distinctes :
 * spending_account : contiendra les informations sur les comptes courants des clients
 * saving_account : contiendra les informations sur les comptes épargnes des clients
 
-image::images/bankonet_db1.png[]
-
-https://gitlab.bordeaux.sqli.com/formation-poe/prj-bankonet/blob/master/back/scripts/bankonet_db1.sql[Sources]
+image::images/Progressive Bank_db1.png[]
 
 Contraintes particulières :
 
@@ -296,7 +286,7 @@ Contraintes particulières :
 
 *Cas d'utilisation Gestion Clients*
 
-* GET /api/v1/client/list : Lister les clients de bankonet
+* GET /api/v1/client/list : Lister les clients de Progressive Bank
 ** @return : List<Client> => [{"id":1,"lastname":"Doe","firstname":"John","email":"johndoe@gmail.com","phone":"0101010101"},{"id":2,"lastname":"Doe","firstname":"Jane","email":"janedoe@gmail.com","phone":"0202020202"}]
 * GET /api/v1/client/{id} : Récupérer le client {id}
 ** @return : Client => {"id":1,"lastname":"Doe","firstname":"John","email":"johndoe@gmail.com","phone":"0101010101"}
@@ -352,8 +342,6 @@ Contraintes particulières :
 image::images/uml/ClassDiagram.png[]
 image::images/uml/ClassDiagramModel.png[]
 
-https://gitlab.bordeaux.sqli.com/formation-poe/prj-bankonet/blob/master/doc/uml/banckonet-class_diagram.puml[Sources]
-
 === Front Angular
 
 ==== Espace Agent
@@ -362,15 +350,11 @@ image::images/uml/Admin-UseCase.png[]
 
 L'agent se sonnecte à son espace réservé afin de pouvoir gérer les clients et leurs comptes, ainsi que l'ensemble des comptes de la banque.
 
-https://gitlab.bordeaux.sqli.com/formation-poe/prj-bankonet/blob/master/doc/uml/espace_agent-activity_diagram.puml[Sources]
-
 ==== Espace Client
 
 image::images/uml/Client-UseCase.png[]
 
 Le client se connecte à son espace réservé pour pouvoir gérer ses informations, ses comptes et pouvoir effectuer des tranferts.
-
-https://gitlab.bordeaux.sqli.com/formation-poe/prj-bankonet/blob/master/doc/uml/espace_client-activity_diagram.puml[Sources]
 
 ==== Achitecture du projet côté Angular
 
