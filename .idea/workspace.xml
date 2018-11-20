@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2ccc8cf-fabb-484d-98d5-f186776792b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/admin/admin-components/client-list/client-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/admin/admin-components/client-list/client-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/service/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/service/account.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/service/client.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/service/client.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/polyfills.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankapp/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankapp/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankapp/controller/SavingAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankapp/controller/SavingAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankapp/controller/SpendingAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankapp/controller/SpendingAccountController.java" afterDir="false" />
-    </list>
+    <list default="true" id="d2ccc8cf-fabb-484d-98d5-f186776792b0" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +199,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542740508719" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542740976016" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -256,12 +243,12 @@
       <workItem from="1542389828169" duration="2059000" />
       <workItem from="1542396371205" duration="1088000" />
       <workItem from="1542451829617" duration="548000" />
-      <workItem from="1542738649765" duration="754000" />
+      <workItem from="1542738649765" duration="861000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4449000" />
+    <option name="totallyTimeSpent" value="4556000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="23" width="1268" height="711" extended-state="0" />
