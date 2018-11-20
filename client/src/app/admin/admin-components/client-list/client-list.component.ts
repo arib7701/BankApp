@@ -11,7 +11,7 @@ import { AccountService } from 'src/app/service/account.service';
 })
 export class ClientListComponent implements OnInit, OnDestroy {
 
-  private clients: Client[];
+  public clients: Client[];
   private client: Client;
   private subscriptionClient: Subscription;
   private subscriptionDeleteClient: Subscription;
