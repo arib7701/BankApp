@@ -1,3 +1,5 @@
+Application available at: https://progressivebankapp.herokuapp.com/
+
 
 // DATABASE SET UP
 
