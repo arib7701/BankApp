@@ -1,4 +1,6 @@
-Application available at: https://progressivebankapp.herokuapp.com/
+Application available at: 
+https://progressivebankapp.herokuapp.com/ for client side and 
+https://progressivebankapp.herokuapp.com/admin for admin side.
 
 
 // DATABASE SET UP
