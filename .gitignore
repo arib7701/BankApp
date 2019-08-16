@@ -39,12 +39,13 @@ testem.log
 /typings
 
 # System Files
-.DS_Store
+*/.DS_Store
 Thumbs.db
 mvnw
 mvnw.cmd
 bankapp.iml
 
 client/src/environments/*
+client/node_modules/*
 src/main/resources/*
 
