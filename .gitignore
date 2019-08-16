@@ -4,12 +4,15 @@
 /dist
 /tmp
 /out-tsc
+**/.sonarlint
+
 
 # dependencies
 /node_modules
 
 # IDEs and editors
 /.idea
+/.mvn
 .project
 .classpath
 .c9/
@@ -37,3 +40,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+mvnw
+mvnw.cmd
+bankapp.iml
+
+
