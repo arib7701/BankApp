@@ -45,5 +45,6 @@ mvnw
 mvnw.cmd
 bankapp.iml
 
-/client/src/environments/*
+client/src/environments/*
+src/main/resources/*
 
