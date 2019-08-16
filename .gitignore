@@ -45,4 +45,5 @@ mvnw
 mvnw.cmd
 bankapp.iml
 
+/client/src/environments/*
 
